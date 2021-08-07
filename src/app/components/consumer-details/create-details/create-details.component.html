@@ -1,0 +1,99 @@
+<div class="form-container">
+    <form [formGroup]="consumerForm" (ngSubmit)="doAction(consumerForm.value)">
+        <h2>Log In</h2>
+        <div>
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" formControlName="firstname" required placeholder="Enter firstname">
+        </div>
+        <div *ngIf="consumerForm.controls['firstname'].invalid && consumerForm.controls['firstname'].touched" class="alert-danger">
+          
+            Name is required.
+          
+        </div>
+        <div>
+            <label for="lastname">last Name</label>
+            <input type="text" name="lastname" formControlName="lastname" required placeholder="Enter lastname">
+        </div>
+        <div>
+            <label for="businessname">Business Name</label>
+            <input type="text" name="businessname" formControlName="businessname" required placeholder="Enter businessname">
+        </div>
+        <div>
+            <label for="dob">DOB</label>
+            <input type="date" name="dob" formControlName="dob" required placeholder="Enter lastname">
+        </div>
+        <div>
+            <label for="pan">PAN card no</label>
+            <input type="text" name='pandetails' formControlName='pandetails' required placeholder="Enter PAN number">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name='email' formControlName='email' required placeholder="Enter Email">
+        </div>
+        <div>
+            <label for="phone">Phone</label>
+            <input type="string" name='phone' formControlName='phone' required placeholder="Enter Phone">
+        </div>
+        <div>
+            <label for="website">Website</label>
+            <input type="text" name='website' formControlName='website' required >
+        </div>
+        <div>
+            <label for="businessoverview">Business Overview</label>
+            <input type="text" name='businessoverview' formControlName='businessoverview' required >
+        </div>
+        <div>
+            <label for="validity">Validity</label>
+            <input type="text" name='validity' formControlName='validity' required >
+        </div>
+        <div>
+            <label for="agentname">Agent Name</label>
+            <input type="text" name='agentname' formControlName='agentname' required >
+        </div>
+        <div>
+            <label for="agentid">Agent Id</label>
+            <input type="number" name='agentid' formControlName='agentid' required >
+        </div>
+        <div>
+            <label for="businesscategory">Business category</label>
+            <select name="businesscategory" id="businesscategory" formControlName='businesscategory' [(ngModel)]='bsCategory' (change)="changeType(bsCategory)">
+                <option [ngValue]='null' disabled>Select category</option>
+                <option *ngFor="let category of categories" [ngValue]='category'>{{category}}</option>
+            </select>
+        </div>
+        <div>
+            <label for="businesstype">Business type</label>
+            <select name="businesstype" id="businesstype" formControlName='businesstype'>
+                <option [ngValue]='null' disabled>Select category</option>
+                <option *ngFor="let type of actualTypes" [ngValue]='type'>{{type}}</option>
+            </select>
+        </div>
+        <div>
+            <label for="businessturnover">businessturnover</label>
+            <input type="number" name='businessturnover' formControlName='businessturnover' required >
+        </div>
+        <div>
+            <label for="capitalinvested">capitalinvested</label>
+            <input type="number" name='capitalinvested' formControlName='capitalinvested' required >
+        </div>
+        <div>
+            <label for="totalemployees">totalemployees</label>
+            <input type="number" name='totalemployees' formControlName='totalemployees' required >
+        </div>
+        <div>
+            <label for="businessage">businessage</label>
+            <input type="number" name='businessage' formControlName='businessage' required >
+        </div>
+        <div>
+            <button [disabled]='consumerForm.invalid' type="submit">Submit</button>
+        </div>
+    </form>
+
+    <div *ngIf='errorMessage' class="error">
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='message' class="success">
+        {{message}}
+    </div>
+</div>

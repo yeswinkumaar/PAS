@@ -1,0 +1,10 @@
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+.alert-danger {
+    color: red;
+    font-size: small;
+}
